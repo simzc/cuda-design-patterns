@@ -19,18 +19,18 @@
 #include "include/multiply/multiply.h"
 #include "include/cuda_utils.h"
 
-template <typename ValueT>
-struct Multiply<ValueT> {
-  static void Apply(const ValueT* A, const ValueT* B, const int H, const int W,
-                    ValueT* C) {
-#if WITH_CUDA
-    Multiply<ValueT, GpuDevice>::Apply(A, B, H, W, C);
-#else   // WITH_CUDA
-    Multiply<ValueT, CpuDevice>::Apply(A, B, H, W, C);
-#endif  // WITH_CUDA
-  }
-};
+// template <typename ValueT>
+// struct Multiply<ValueT> {
+//   static void Apply(const ValueT* A, const ValueT* B, const int H, const int W,
+//                     ValueT* C) {
+// #if WITH_CUDA
+//     Multiply<ValueT, GpuDevice>::Apply(A, B, H, W, C);
+// #else   // WITH_CUDA
+//     Multiply<ValueT, CpuDevice>::Apply(A, B, H, W, C);
+// #endif  // WITH_CUDA
+//   }
+// };
 
-template struct Multiply<double>;
-template struct Multiply<float>;
-template struct Multiply<int>;
+// template struct Multiply<double>;
+// template struct Multiply<float>;
+// template struct Multiply<int>;
